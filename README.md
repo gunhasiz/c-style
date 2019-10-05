@@ -8,7 +8,7 @@ Down below are listed most important rules that can be used for best and cleares
 
 - Use `C99` or `C11` standard
 - Use __ONLY__ English names/text for functions, variables, comments
-- Within project, non-obvious operations describe the code with proper comment
+- Within project, non-obvious operations describe with proper comment
 - Name the variables so that someone else can understand what it is needed for
 - Don't use tabs, use 4 spaces insted for one indent level
 - Use `1` space between keyword and opening bracket
