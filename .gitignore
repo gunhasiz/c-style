@@ -1,0 +1,6 @@
+## .gitignore 
+## File written by Krzysztof Oflus 2019
+##
+
+## Visual Studio Code main folder
+.vscode
