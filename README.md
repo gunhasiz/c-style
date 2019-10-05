@@ -1,4 +1,4 @@
-# Coding rules for C programming development
+## Coding rules for C programming development
 
 This document described coding rules for C development used by Krzysztof Oflus in his projects.
 
@@ -7,7 +7,7 @@ This document described coding rules for C development used by Krzysztof Oflus i
 Down below are listed most important rules that can be used for best and clearest code.
 
 - Use `C99` or `C11` standard
-- Use ONLY English names/text for functions, variables, comments
+- Use __ONLY__ English names/text for functions, variables, comments
 - Within project, non-obvious operations describe the code with proper comment
 - Name the variables so that someone else can understand what it is needed for
 - Don't use tabs, use 4 spaces insted for one indent level
