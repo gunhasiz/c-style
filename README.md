@@ -1,8 +1,8 @@
-## Coding rules for C programming development
+# Coding rules for C programming development
 
 This document described coding rules for C development used by Krzysztof Oflus in his projects.
 
-# General rules
+## General rules
 
 Down below are listed most important rules that can be used for best and clearest code.
 
