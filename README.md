@@ -1,4 +1,4 @@
-# Recommended coding rules for C programming development
+# Coding rules for C programming development
 
 This document described coding rules for C development used by Krzysztof Oflus in his projects.
 
