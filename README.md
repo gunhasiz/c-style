@@ -6,7 +6,7 @@ This document described coding rules for C development used by Krzysztof Oflus i
 
 Down below are listed most important rules that can be used for best and clearest code.
 
-- Use `C99` or `C11` standard
+- Use `C11` standard
 - Use __ONLY__ English names/text for functions, variables, comments
 - Within project, non-obvious operations describe with proper comment
 - Name the variables so that someone else can understand what it is needed for
@@ -114,7 +114,6 @@ bool flag = true;           // Correct
 int i_flag = 1;             // Also correct
 ```
 - Always use `size_t` for length or size variables
-- Always use `const` for pointer if function should not modify memory pointed to by `pointer`
 - Never use *Variable Length Array*. Use dynamic memory allocation with `malloc`, `calloc` and `free`
 - Avoid usage of `alloc.h` library with `alloc` and `alloca` memory allocation
 - Use *lowercase* characters for local variables and *uppercase* for global variables
