@@ -2,9 +2,11 @@
 
 This document described coding rules for C development used by Krzysztof Oflus in his projects.
 
-## General rules
+## General Rules
 
 Down below are listed most important rules that can be used for best and clearest code.
+
+### Main Rules
 
 - Use `C11` standard
 - Use __ONLY__ English names/text for functions, variables, comments
@@ -115,9 +117,175 @@ int i_flag = 1;             // Also correct
 ```
 - Always use `size_t` for length or size variables
 - Never use *Variable Length Array*. Use dynamic memory allocation with `malloc`, `calloc` and `free`
-- Avoid usage of `alloc.h` library with `alloc` and `alloca` memory allocation
+- If declaraing *pointer* then use asterix straight after data type
+```c
+int* pointer;       // Correct
+int * pointer;      // Wrong
+int *pointer;       // Wrong
+```
 - Use *lowercase* characters for local variables and *uppercase* for global variables
 - Use *undescore* for variable containing multiple names, eg. `multi_name_variable`
 - Always use `<>` for C Standard Library include files
 - Always use `""` for custom libraries
 - Always respect code style that is already used in project or library
+
+### Comments Rules
+
+- For single line comments always use `//`. For multi line always use `/* some comment*/`.
+```c
+// This single line comment is ok 
+/* This single line comment is not ok */
+
+// This multi line comment,
+// is not ok
+/*
+ * This multi line comment,
+ * is ok
+ */
+```
+- For multi line comments us `space + *` for every line
+```c
+/*
+ * This multi line comment,
+ * is ok with space + asterix
+ */
+
+/*
+* This multi line comment,
+* is not ok with space + asterix
+*/
+```
+- Use comments only in new lines. However if you need to comment something within code, then comment line after first 80 symbols in total (example below)
+```c
+int some_variable;                                                              // Comment
+```
+
+### Local Variables Rules
+
+- Variables naming have a few cases which are:
+    1. Variable name must be lowercase
+    2. Variable with multi word name must be separated with underscore `_`
+    3. Variable name must be adequate to its purpose
+```c
+int index;              // Correct
+int data_base_index;    // Correct
+/*------------------------------*/
+char a1;                // Wrong
+char a2;                // Wrong
+double Floatingpoint;   // Wrong
+double FLOATingpoint;   // Wrong
+```
+- Group variables together by *type*
+```c
+// All of this variables are correct
+int index;
+int credit_card_number;
+char local_character;
+char symbol;
+char* address;
+double addition_sum;
+/*--------------------------------*/
+// All of this variables are wrong
+int index;
+char local_character;
+double addition_sum;
+int credit_card_number;
+char* address;
+char symbol;
+```
+- You may declare new variables inside next indent level
+```c
+int flag = 2;
+if (flag == 2) {
+    int new_flag;
+    new_flag == ++flag;
+}
+```
+- Declare pointer variables with asterix aligned to type
+```c
+char* pointer;      // Correct
+/*-----------------------------*/
+char *pointer;      // Wrong
+char * pointer;     // also wrong
+```
+- Declaring multiple pointers within same line is permitted
+
+### Global Variables Rules
+
+- Variables naming have a few cases which are:
+    1. Variable name must be uppercase
+    2. Variable with multi word name must be separated with underscore `_`
+    3. Variable name must be adequate to its purpose
+```c
+int Flag;              // Correct
+int Main_Counter;      // Correct
+char List[];           // Correct
+/*------------------------------*/
+char a1;                // Wrong
+char A2;                // Wrong
+double Floatingpoint;   // Wrong
+double FLOATingpoint;   // Wrong
+```
+- Avoid global pointers
+- Use Global variables __ONLY__ if necessery
+
+### Functions Rules
+
+- Every function must be included with *function prototype*
+```c
+void function();
+
+int main() {
+    // Some code here
+    return 0;
+}
+
+void function(){
+    // Function logic here
+}
+```
+- Functions naming have a few cases which are:
+    1. Function name must be lowercase
+    2. Function with multi word name must be separated with underscore `_`
+    3. Function name must be adequate to its logic
+```c
+void bubble_sort();     // Correct
+void bubblesort();      // Wrong
+void BubbleSort();      // Wrong
+```
+- Align all function prototypes for cleaner code
+- Function implementation must include type and optional other keywords in the same line as function name
+```c
+int function(void) {        // Correct
+    return 1;
+}
+
+int
+function(void) {            // Wrong
+    return 1;
+}
+```
+- Function with no parameters must include void within brackets
+```c
+int function (void) {       // Correct
+    return 1;
+}
+
+int function () {            // Wrong
+    return 1;
+}
+```
+- Functions which returns a pointer, must have asterix character after last function type keyword
+```c
+int* function () {          // Correct
+    return *p;
+}
+
+int * function () {         // Wrong
+    return *p;
+}
+
+int *function () {          // Wrong
+    return *p;
+}
+```
