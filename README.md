@@ -1,18 +1,18 @@
 # Coding rules for C programming development
 
-This document described coding rules for C development used by Krzysztof Oflus in his projects.
+This document describes coding rules for C development used by Krzysztof Oflus in his projects.
 
 ## General Rules
 
-Down below are listed most important rules that can be used for best and clearest code.
+Below are listed most important rules that can be used for best and clearest code.
 
 ### Main Rules
 
 - Use `C11` standard
-- Use __ONLY__ English names/text for functions, variables, comments
-- Within project, non-obvious operations describe with proper comment
-- Name the variables so that someone else can understand what it is needed for
-- Don't use tabs, use 4 spaces insted for one indent level
+- Use __ONLY__ English language for functions, variables, comments
+- Within project, describe non-obvious operations with proper comment
+- Name the variables so that someone else can understand what they are needed for
+- Don't use tabs: use `4` spaces instead for one indent level
 - Use `1` space between keyword and opening bracket
 - Don't use space between function name and opening bracket
 ```c
@@ -35,7 +35,7 @@ if (var < 2)                   // Wrong
 {
 }
 ```
-- Single instruction below `if`, `while`, `for` should be indented with 4 spaces
+- Single instruction below `if`, `while`, `for` should not contain brackets and should be indented with 4 spaces
 ```c
 for (int i = 0;i < 3;i++)       // Correct
     a = a + c;
@@ -52,7 +52,7 @@ if (var < 2)                    // Wrong
 if (var > 2)                    // Wrong
 var = 30;
 ```
-- Use space before and after comparison and assignment operators (This rule does not apply for `for` loop)
+- Use space before and after comparison and assignment operators (This rule does not apply in `for` loop)
 ```c
 int var = 2 * 2;        // Correct
 if (var == 4)           // Correct
@@ -77,13 +77,13 @@ function(1,var);        // Wrong
 ```c
 int a, b, c;        // Correct
 char d, e, f;       // Correct
-char f;             // Wrong, variable already exist
+char g;             // Wrong, type declared above
 ```
 - Declare all variables in order
     1. Custom structures and enumerations
     2. Numeric, alphanumeric, characters
     3. Single/Double floating point
-- Declare variable within `for` loop
+- Declare variable within `for` loop unless you need to reference them outside the loop
 ```c
 for (int i = 3;i < 12;i++)      // Correct
 int i;                          // Correct if you need variable later
@@ -94,7 +94,7 @@ if (i == 11) {
 }
 /*--------------------------------------*/
 int i;                          // Wrong if you don't use i variable later
-for (i =3;i < 12;i++)
+for (i = 3;i < 12;i++)
     i = a + b;
 ```
 - Variables assignment in the same line is permitted
@@ -117,7 +117,7 @@ int i_flag = 1;             // Also correct
 ```
 - Always use `size_t` for length or size variables
 - Never use *Variable Length Array*. Use dynamic memory allocation with `malloc`, `calloc` and `free`
-- If declaraing *pointer* then use asterix straight after data type
+- While declaring *pointer*, use asterisk right after data type
 ```c
 int* pointer;       // Correct
 int * pointer;      // Wrong
@@ -131,7 +131,7 @@ int *pointer;       // Wrong
 
 ### Comments Rules
 
-- For single line comments always use `//`. For multi line always use `/* some comment*/`.
+- For single line comments always use `//`. For multiline always use `/* ... */`.
 ```c
 // This single line comment is ok 
 /* This single line comment is not ok */
@@ -143,16 +143,16 @@ int *pointer;       // Wrong
  * is ok
  */
 ```
-- For multi line comments us `space + *` for every line
+- In multiline comments align asterisks beneath each other.
 ```c
 /*
  * This multi line comment,
- * is ok with space + asterix
+ * is ok
  */
 
 /*
 * This multi line comment,
-* is not ok with space + asterix
+* is not ok
 */
 ```
 - Use comments only in new lines. However if you need to comment something within code, then comment line after first 80 symbols in total (example below)
@@ -162,10 +162,10 @@ int some_variable;                                                              
 
 ### Local Variables Rules
 
-- Variables naming have a few cases which are:
-    1. Variable name must be lowercase
-    2. Variable with multi word name must be separated with underscore `_`
-    3. Variable name must be adequate to its purpose
+- Names of local variables must be:
+    1. lowercased,
+    2. separated with underscore `_` (in case of multiword names),
+    3. adequate to its purpose.
 ```c
 int index;              // Correct
 int data_base_index;    // Correct
@@ -175,7 +175,7 @@ char a2;                // Wrong
 double Floatingpoint;   // Wrong
 double FLOATingpoint;   // Wrong
 ```
-- Group variables together by *type*
+- Group variables by their *type*
 ```c
 // All of this variables are correct
 int index;
@@ -201,7 +201,7 @@ if (flag == 2) {
     new_flag == ++flag;
 }
 ```
-- Declare pointer variables with asterix aligned to type
+- Declare pointer variables with asterisk aligned to type
 ```c
 char* pointer;      // Correct
 /*-----------------------------*/
@@ -212,10 +212,10 @@ char * pointer;     // also wrong
 
 ### Global Variables Rules
 
-- Variables naming have a few cases which are:
-    1. Variable name must be uppercase
-    2. Variable with multi word name must be separated with underscore `_`
-    3. Variable name must be adequate to its purpose
+- Names of global variables must be:
+    1. uppercased,
+    2. separated with underscore `_` (in case of multiword names)
+    3. adequate to its purpose.
 ```c
 int Flag;              // Correct
 int Main_Counter;      // Correct
@@ -227,7 +227,7 @@ double Floatingpoint;   // Wrong
 double FLOATingpoint;   // Wrong
 ```
 - Avoid global pointers
-- Use Global variables __ONLY__ if necessery
+- Use global variables __ONLY__ if necessary
 
 ### Functions Rules
 
@@ -244,19 +244,20 @@ void function(){
     // Function logic here
 }
 ```
-- Functions naming have a few cases which are:
-    1. Function name must be lowercase
-    2. Function with multi word name must be separated with underscore `_`
-    3. Function name must be adequate to its logic
+- Names of functions must be:
+    1. lowercased,
+    2. separated with underscore `_` (in case of multiword names),
+    3. be adequate to its purpose.
 ```c
 void bubble_sort();     // Correct
 void bubblesort();      // Wrong
 void BubbleSort();      // Wrong
+void aaaa();            // Wrong
 ```
 - Align all function prototypes for cleaner code
-- Function implementation must include type and optional other keywords in the same line as function name
+- Signature of function must contain return type and parameters in the same line as function name
 ```c
-int function(void) {        // Correct
+int function (void) {        // Correct
     return 1;
 }
 
@@ -275,7 +276,7 @@ int function () {            // Wrong
     return 1;
 }
 ```
-- Functions which returns a pointer, must have asterix character after last function type keyword
+- Function which returns a pointer, must have asterisk right after its return type
 ```c
 int* function () {          // Correct
     return *p;
